@@ -1,7 +1,12 @@
 ﻿@page "/example/test";
  
-<h3>Test</h3>
+<h3>hello @GetUserName() welcome to our <b>application</b></h3>
 
 @code {
+    private string userName = "German";
 
+    private string GetUserName()
+    {
+        return userName + " Gritsenko";
+    }
 }
