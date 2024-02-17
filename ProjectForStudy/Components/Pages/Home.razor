@@ -1,7 +1,42 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@foreach(var contact in contacts)
+{
+    <p>
+        <b>Name: </b><span>@contact.FirstName @contact.LastName</span><br />
+        <b>Email: </b><i>@contact.Email</i>
+        
+    </p>
+}
 
-<h1>Hello, world!</h1>
+@code
+{
+    private List<Contact> contacts;
 
-Welcome to your new app.
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        contacts = new List<Contact>
+        {
+            new Contact
+            {
+                FirstName = "German",
+                LastName = "Gritsenko2",
+                Email = "SomeEmail2@gmail.com"
+            },
+            new Contact
+            {
+                FirstName = "German",
+                LastName = "Gritsenko1",
+                Email = "SomeEmail1@gmail.com"
+            },
+            new Contact
+            {
+                FirstName = "German",
+                LastName = "Gritsenko3",
+                Email = "SomeEmail3@gmail.com"
+            }
+        };
+    }
+}
