@@ -1,12 +1,30 @@
 ﻿@page "/example/test";
  
-<h3>hello @GetUserName() welcome to our <b>application</b></h3>
+<h3>hello @userName ... welcome to our <b>application</b></h3>
+
+<button @onclick="@ChangeName">Change Name</button>
+
+@if (testNum == 1)
+{
+    <p>Num is 1</p>
+}
+else 
+{
+    <p>num is null</p>
+}
+
 
 @code {
     private string userName = "German";
+    private int testNum = 1;
 
     private string GetUserName()
     {
         return userName + " Gritsenko";
+    }
+
+    private void ChangeName()
+    {
+        userName = "Eugene";
     }
 }
