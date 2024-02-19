@@ -2,7 +2,7 @@
 
 @foreach(var contact in contacts)
 {
-  <FirstComponent FirstName="@contact.FirstName" LastName="@contact.LastName" Email="@contact.Email"></FirstComponent>
+  <FirstComponent CurrentContact="contact"></FirstComponent>
 }
 
 @code
