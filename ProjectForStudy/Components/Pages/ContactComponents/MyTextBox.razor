@@ -1,6 +1,6 @@
-﻿<input placeholder="@Placeholder" />
+﻿<input disabled="disabled" type="text" @attributes="CustomAttributes"/>
 
 @code{
-    [Parameter]
-    public string Placeholder {get; set;}
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> CustomAttributes {get;set;}
 }

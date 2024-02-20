@@ -1,9 +1,19 @@
 ﻿<p>
     <b>Name: </b><span>@CurrentContact.FirstName @CurrentContact.LastName</span><br />
     <b>Email: </b><i>@CurrentContact.Email</i>
+    <br />
+    @if (displayInfo)
+    {
+        <span>The email address of @CurrentContact.FirstName @CurrentContact.LastName is @CurrentContact.Email</span>
+    }
 
+    <br />
+    <button title="press" @onclick="@(()=> {displayInfo = true;})">Show Info</button>
 </p>
-@code{
+
+@code {
     [Parameter]
     public Contact CurrentContact { get; set; }
+
+    private bool displayInfo = false;
 }
