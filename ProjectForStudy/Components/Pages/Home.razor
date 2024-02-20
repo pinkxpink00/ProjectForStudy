@@ -1,10 +1,11 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
+<input type="checkbox" @onchange = "@(() => {DisplayEmail = !DisplayEmail;})" /><label>Display Email</label>
 
 @foreach(var contact in contacts)
 {
-  <FirstComponent CurrentContact="contact"></FirstComponent>
+  <FirstComponent CurrentContact="contact" DisplayEmail="DisplayEmail"></FirstComponent>
 }
 
 <br />
@@ -13,6 +14,7 @@
 
 @code
 {
+    private bool DisplayEmail = false;
     private List<Contact> contacts;
 
     protected override void OnInitialized()

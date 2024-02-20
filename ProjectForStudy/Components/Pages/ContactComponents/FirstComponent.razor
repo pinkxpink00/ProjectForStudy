@@ -1,6 +1,11 @@
 ﻿<p>
     <b>Name: </b><span>@CurrentContact.FirstName @CurrentContact.LastName</span><br />
-    <b>Email: </b><i>@CurrentContact.Email</i>
+
+    @if(DisplayEmail)
+    {
+        <b>Email: </b><i>@CurrentContact.Email</i>
+    }
+
     <br />
     @if (displayInfo)
     {
@@ -8,13 +13,16 @@
     }
 
     <br />
-    <button class="btn btn-primary" @onclick="@(() => {displayInfo = true;})">Show Info</button>
+    <button class="btn btn-primary" @onclick="@(() => {displayInfo = !displayInfo;})">Show Info</button>
     
 </p>
 
 @code {
     [Parameter]
     public Contact CurrentContact { get; set; }
+
+    [Parameter]
+    public bool DisplayEmail { get; set; }
 
     private bool displayInfo = false;
 }
