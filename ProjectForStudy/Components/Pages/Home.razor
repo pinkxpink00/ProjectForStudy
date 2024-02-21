@@ -1,7 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
-<input type="checkbox" @onchange = "@(() => {DisplayEmail = !DisplayEmail;})" /><label>Display Email</label>
+<input type="checkbox" @bind="@DisplayEmail" /><label>Display Email</label>
 
 @foreach(var contact in contacts)
 {
