@@ -5,7 +5,7 @@
 
 @foreach(var contact in contacts)
 {
-  <FirstComponent CurrentContact="contact" DisplayEmail="DisplayEmail"></FirstComponent>
+  <FirstComponent CurrentContact="contact" DisplayEmail="DisplayEmail" DeleteCurrentContact="DeleteContact"></FirstComponent>
 }
 
 <br />
@@ -16,6 +16,11 @@
 {
     private bool DisplayEmail = false;
     private List<Contact> contacts;
+
+    public void DeleteContact(Contact contact)
+    {
+        contacts.Remove(contact);
+    }
 
     protected override void OnInitialized()
     {
