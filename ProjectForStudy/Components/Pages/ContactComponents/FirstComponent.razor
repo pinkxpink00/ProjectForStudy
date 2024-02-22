@@ -1,5 +1,7 @@
 ﻿<p>
-    <b>Name: </b><span>@CurrentContact.FirstName @CurrentContact.LastName</span><br />
+    <b>Name: </b><span>@CurrentContact.FirstName</span><br />
+    <b>Surname: </b><span>@CurrentContact.LastName</span><br />
+    <b>Phone Number:</b><span>@CurrentContact.Phone</span><br />
 
     @if(DisplayEmail)
     {
@@ -9,7 +11,7 @@
     <br />
     @if (displayInfo)
     {
-        <span>The email address of @CurrentContact.FirstName @CurrentContact.LastName is @CurrentContact.Email</span>
+        <span>The email address and phone of @CurrentContact.FirstName @CurrentContact.LastName is @CurrentContact.Email, @CurrentContact.Phone </span>
     }
 
     <br />

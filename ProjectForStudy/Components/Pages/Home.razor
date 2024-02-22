@@ -15,37 +15,3 @@
 <br />
 
 <MyTextBox placeholder="Placeholder 01" ></MyTextBox>
-
-@code
-{
-    private List<Contact> contacts;
-
-    protected async override Task OnInitializedAsync()
-    {
-        await Task.Delay(5000);
-
-        contacts = new List<Contact>
-        {
-            new Contact
-            {
-                FirstName = "German",
-                LastName = "Gritsenko2",
-                Email = "SomeEmail2@gmail.com"
-            },
-            new Contact
-            {
-                FirstName = "German",
-                LastName = "Gritsenko1",
-                Email = "SomeEmail1@gmail.com"
-            },
-            new Contact
-            {
-                FirstName = "German",
-                LastName = "Gritsenko3",
-                Email = "SomeEmail3@gmail.com"
-            }
-        };
-
-        base.OnInitializedAsync();
-    }
-}
