@@ -1,26 +1,15 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
-<input type="checkbox" @bind="@DisplayEmail" /><label>Display Email</label>
-
-@foreach(var contact in contacts)
-{
-  <FirstComponent CurrentContact="contact" DisplayEmail="DisplayEmail" DeleteCurrentContact="DeleteContact"></FirstComponent>
-}
+<ContactList Contacts="contacts"></ContactList>
 
 <br />
 
-<MyTextBox placeholder="Placeholder 01"  ></MyTextBox>
+<MyTextBox placeholder="Placeholder 01" ></MyTextBox>
 
 @code
 {
-    private bool DisplayEmail = false;
     private List<Contact> contacts;
-
-    public void DeleteContact(Contact contact)
-    {
-        contacts.Remove(contact);
-    }
 
     protected override void OnInitialized()
     {
