@@ -1,11 +1,26 @@
 ﻿<input type="checkbox" @bind="@DisplayEmail" /><label>Display Email</label>
 
-@foreach (var contact in Contacts)
+@if(Contacts is null)
 {
-    <FirstComponent CurrentContact="contact" DisplayEmail="DisplayEmail" DeleteCurrentContact="DeleteContact"></FirstComponent>
+    @ContactLoad
+}
+else if(Contacts.Count == 0)
+{
+    @NullContact
+}
+else
+{
+    @foreach (var contact in Contacts)
+    {
+        <FirstComponent CurrentContact="contact" DisplayEmail="DisplayEmail" DeleteCurrentContact="DeleteContact"></FirstComponent>
+    }
 }
 
 @code{
+    [Parameter]
+    public RenderFragment NullContact { get; set; }
+    [Parameter]
+    public RenderFragment ContactLoad { get; set; }
     [Parameter]
     public List<Contact> Contacts {get;set;}
 

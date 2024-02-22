@@ -1,7 +1,16 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
-<ContactList Contacts="contacts"></ContactList>
+<ContactList Contacts="contacts">
+    <NullContact>
+        <br />
+        <span>Contact is 0</span>
+    </NullContact>
+    <ContactLoad>
+        <br />
+        <span>Contact is loading...</span>
+    </ContactLoad>
+</ContactList>
 
 <br />
 
@@ -11,9 +20,9 @@
 {
     private List<Contact> contacts;
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        base.OnInitialized();
+        await Task.Delay(5000);
 
         contacts = new List<Contact>
         {
@@ -36,5 +45,7 @@
                 Email = "SomeEmail3@gmail.com"
             }
         };
+
+        base.OnInitializedAsync();
     }
 }
