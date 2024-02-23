@@ -1,8 +1,44 @@
 ﻿@page "/demo01"
 @inject ContactService contactService
+@inject Demo01Contact demo01contact
 
-<h3>demo01</h3>
+<input placeholder="FirstName" @bind="demo01contact.firstName" />
+<br />
+<input placeholder="LastName" @bind="demo01contact.lastName" />>
+<br />
+<input placeholder="Email" @bind="demo01contact.email" />>
+<br />
+<input placeholder="PhoneNumber" @bind="demo01contact.phoneNumber" />>
+<br />
+<button>Add Contact</button>
 
-@code {
 
+@if(contactService.ContactList.Count == 0)
+{
+    <b>No Contacts...</b>
+}
+else
+{
+    foreach(var contacts in contactService.ContactList)
+    {
+        <b>@contacts.FirstName @contacts.LastName</b>
+        <i>@contacts.Email</i>
+        <i>@contacts.Phone</i><br />
+        <hr />
+    }
+}
+
+@code{
+    private void AddContact(Demo01Contact demo01Contact)
+    {
+        var contact = new Contact
+            {
+                FirstName = demo01Contact.firstName,
+                LastName = demo01Contact.lastName,
+                Email = demo01Contact.email,
+                Phone = demo01Contact.phoneNumber
+            };
+
+            contactService.AddContact(contact);
+    }
 }

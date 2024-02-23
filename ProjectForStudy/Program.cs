@@ -3,10 +3,7 @@ using ProjectForStudy.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-builder.Services.AddSingleton<ContactService>();
+ConfigureService(builder.Services);
 
 var app = builder.Build();
 
@@ -23,3 +20,9 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+static void ConfigureService(IServiceCollection services)
+{
+    services.AddRazorComponents().AddInteractiveServerComponents();
+    services.AddSingleton<ContactService>();
+}
