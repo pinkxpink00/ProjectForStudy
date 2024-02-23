@@ -1,5 +1,6 @@
 using ProjectForStudy;
 using ProjectForStudy.Components;
+using ProjectForStudy.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,4 +26,5 @@ static void ConfigureService(IServiceCollection services)
 {
     services.AddRazorComponents().AddInteractiveServerComponents();
     services.AddSingleton<ContactService>();
+   
 }

@@ -1,16 +1,23 @@
 ﻿@page "/demo01"
 @inject ContactService contactService
-@inject Demo01Contact demo01contact
+@rendermode InteractiveServer
 
-<input placeholder="FirstName" @bind="demo01contact.firstName" />
+
+<input placeholder="FirstName" @bind="firstName"/>
 <br />
-<input placeholder="LastName" @bind="demo01contact.lastName" />>
 <br />
-<input placeholder="Email" @bind="demo01contact.email" />>
+<input placeholder="LastName" @bind="lastName" />>
 <br />
-<input placeholder="PhoneNumber" @bind="demo01contact.phoneNumber" />>
 <br />
-<button>Add Contact</button>
+<input placeholder="Email" @bind="email" />>
+<br />
+<br />
+<input placeholder="PhoneNumber" @bind="phoneNumber" />>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="()=>AddContact()">Add Contact</button>
+<br />
+<br />
 
 
 @if(contactService.ContactList.Count == 0)
@@ -29,16 +36,19 @@ else
 }
 
 @code{
-    private void AddContact(Demo01Contact demo01Contact)
-    {
-        var contact = new Contact
-            {
-                FirstName = demo01Contact.firstName,
-                LastName = demo01Contact.lastName,
-                Email = demo01Contact.email,
-                Phone = demo01Contact.phoneNumber
-            };
+    private string firstName,lastName,email,phoneNumber;
 
-            contactService.AddContact(contact);
+    public void AddContact()
+    {
+        Console.WriteLine("AddContact method called!");
+        var contact = new Contact()
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            Email = email,
+            Phone = phoneNumber
+        };
+
+        contactService.AddContact(contact);
     }
 }
